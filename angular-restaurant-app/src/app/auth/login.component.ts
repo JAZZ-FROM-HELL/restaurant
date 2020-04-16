@@ -13,6 +13,8 @@ import { AuthenticationService } from './authentication.service';
 
 @Component({ templateUrl: 'login.component.html' })
 export class LoginComponent implements OnInit {
+  static PATH = 'login';
+
   loginForm: FormGroup;
   loading = false;
   submitted = false;
@@ -60,7 +62,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate([this.returnUrl]);
         },
         error => {
-          this.error = error.error.message || error.error.text;
+          this.error = error.error.statusCode === 401 ? 'Invalid username or password' : error.error.message || error.error.text;
           this.loading = false;
         });
   }

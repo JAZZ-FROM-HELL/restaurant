@@ -9,6 +9,9 @@ import { ItemsService } from './items.service';
   styleUrls: ['./items.component.css']
 })
 export class ItemsComponent implements OnInit {
+
+  static PATH = 'items';
+
   items: Item[] = [];
   itemSubmitted = false;
   itemForm: FormGroup;

@@ -12,15 +12,15 @@ import { AuthenticationService } from '../auth/authentication.service';
 @Component({ templateUrl: 'home.component.html' })
 export class HomeComponent {
   loading = false;
-  users: User[];
+  user: User;
 
   constructor(private userService: UserService) { }
 
   ngOnInit() {
     this.loading = true;
-    this.userService.getAll().pipe(first()).subscribe(users => {
+    this.userService.getUser().pipe(first()).subscribe(user => {
       this.loading = false;
-      this.users = users;
+      this.user = user;
     });
   }
 }

@@ -8,8 +8,8 @@ import {ItemsComponent} from "./items/items.component";
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
-  { path: 'login', component: LoginComponent },
-  { path: 'items', component: ItemsComponent },
+  { path: LoginComponent.PATH, component: LoginComponent },
+  { path: ItemsComponent.PATH, component: ItemsComponent, canActivate: [AuthGuard]  },
   // otherwise redirect to home
   //{ path: '**', redirectTo: '' }
 ];
