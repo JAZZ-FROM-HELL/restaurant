@@ -9,6 +9,9 @@ import { ItemsService } from './items.service';
   styleUrls: ['./items.component.css']
 })
 export class ItemsComponent implements OnInit {
+
+  static PATH = 'items';
+
   items: Item[] = [];
   itemSubmitted = false;
   itemForm: FormGroup;
@@ -29,6 +32,7 @@ export class ItemsComponent implements OnInit {
   addToCart() {
     //window.alert('Added');
     this.itemService.postToShoppingCart().subscribe(response => {
+      window.alert(response);
     }, error => {
       window.alert(error.error.message || error.error.text);
       console.log(error);
