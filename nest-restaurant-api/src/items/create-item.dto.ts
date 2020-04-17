@@ -1,5 +1,5 @@
 import { IsString, IsInt } from 'class-validator';
-import { Item } from "../../dist/items/item.interface";
+import {Item} from "./item";
 
 export class CreateItemDto extends Item {
 
