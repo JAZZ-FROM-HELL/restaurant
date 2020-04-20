@@ -1,5 +1,19 @@
 <h2>nest-restaurant-api</h2>
-<p>Based on <a href="https://auth0.com/blog/full-stack-typescript-apps-part-1-developing-backend-apis-with-nestjs/">AUTH0 Example</a></p>
+<h3>Run:</h3> 
+<p>
+Server (nest-restaurant-api): <br/>npm start<br/><br/>
+Client (angular-restaurant-app): <br/>ng serve --proxy-config proxy.config.js --open<br/>
+</p>
+<h3>Based on:</h3>
+<p>
+<a href="https://auth0.com/blog/full-stack-typescript-apps-part-1-developing-backend-apis-with-nestjs/">AUTH0 Example</a><br/><br/>
+<a href="https://docs.nestjs.com/techniques/authentication">NestJS Authentication / Authorization</a><br/><br/>
+<a href="https://jasonwatmore.com/post/2019/06/22/angular-8-jwt-authentication-example-tutorial">Angular 8 - JWT Authentication Example & Tutorial</a><br/><br/>
+<a href="https://github.com/nestjs/nest/tree/master/sample/05-sql-typeorm">SQL TypeORM Example</a><br/>
+</p>
+<br/>
+<hr/>
+<br/>
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
 </p>
