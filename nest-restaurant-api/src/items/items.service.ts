@@ -1,17 +1,27 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { CreateItemDto } from './create-item.dto';
 import { Item } from "./item";
+
 
 @Injectable()
 export class ItemsService {
-
-    private readonly items: Item[] = [];
-
-    findAll(): Item[] {
-        return this.items;
+    constructor(
+      @InjectRepository(Item)
+      private readonly itemsRepository: Repository<Item>,
+    ) {
     }
 
-    create(item: Item) {
-        this.items.push(item);
+    create(createItemDto: CreateItemDto): Promise<Item> {
+        const item = new Item();
+        item.name = createItemDto.name;
+        item.price = createItemDto.price;
+
+        return this.itemsRepository.save(item);
     }
 
+    async findAll(): Promise<Item[]> {
+        return this.itemsRepository.find();
+    }
 }

@@ -1,4 +1,14 @@
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+
+@Entity()
 export class Item {
-    readonly name: string;
-    readonly price: number;
+    @PrimaryGeneratedColumn()
+    id: number;
+
+    @Column()
+    name: string;
+
+    @Column()
+    price: number;
+
 }
