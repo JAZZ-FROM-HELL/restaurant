@@ -1,4 +1,4 @@
-import {Controller, Request, Get, Post, UseGuards} from '@nestjs/common';
+import {Controller, Request, Get, Post, UseGuards, HttpException, HttpStatus} from '@nestjs/common';
 import { AppService } from './app.service';
 import {LocalAuthGuard} from "./auth/local-auth.guard";
 import {UsersService} from "./users/users.service";
@@ -8,6 +8,7 @@ import {User} from "./users/user";
 
 @Controller()
 export class AppController {
+
   constructor(private readonly appService: AppService, private readonly usersService: UsersService, private authService: AuthService) {}
 
   /** root / is publicly available */
@@ -26,6 +27,11 @@ export class AppController {
   @Get('profile')
   async getProfile(@Request() req):Promise<User>  {
     return await this.usersService.findOne(req.user.username);
+  }
+
+  @Get('error')
+  async getError() {
+    throw new HttpException('Internal server error', HttpStatus.INTERNAL_SERVER_ERROR);
   }
 
 }
