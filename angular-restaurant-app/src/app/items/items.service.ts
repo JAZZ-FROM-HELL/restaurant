@@ -19,7 +19,7 @@ export class ItemsService {
   }
 
   public postToShoppingCart(): Observable<String> {
-    return this.http.post<String>('/api/shopping-cart', '');
+    return this.http.post<string>('/api/shopping-cart', '');
   }
 
 }

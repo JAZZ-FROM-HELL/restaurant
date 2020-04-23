@@ -1,4 +1,4 @@
-import {MiddlewareConsumer, Module, NestModule, RequestMethod,} from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ShoppingCartController } from "./shopping-cart/shopping-cart.controller";
@@ -7,6 +7,10 @@ import { ItemsModule } from './items/items.module';
 
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
+import { APP_FILTER, APP_INTERCEPTOR } from "@nestjs/core";
+import {GlobalExceptionFilter} from "./common/global-exception.filter";
+import {AppLoggerService} from "./common/app-logger.service";
+import {LoggingInterceptor} from "./common/logging.interceptor";
 
 
 @Module({
@@ -23,6 +27,15 @@ import { UsersModule } from './users/users.module';
     })
   ],
   controllers: [AppController, ShoppingCartController],
-  providers: [AppService],
+  providers: [AppService, AppLoggerService,
+    {
+      provide: APP_FILTER,
+      useClass: GlobalExceptionFilter,
+    },
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: LoggingInterceptor,
+    }],
+  exports: [AppLoggerService],
 })
 export class AppModule { }

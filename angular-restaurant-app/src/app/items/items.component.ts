@@ -30,16 +30,21 @@ export class ItemsComponent implements OnInit {
 
 
   addToCart() {
-    //window.alert('Added');
-    this.itemService.postToShoppingCart().subscribe(response => {
-      window.alert(response);
-    }, error => {
-      window.alert(error.error.message || error.error.text);
-      console.log(error);
-    })
+    this.itemService.postToShoppingCart().subscribe({
+      next(data) {
+        const success:string = JSON.parse(JSON.stringify(data)).success;
+        console.log('Success: ' + success);
+        window.alert('Success: ' + success);
+      },
+      error(err) {
+        console.log(err.error.message || err.error.text);
+        window.alert('Error: ' + (err.error.message || err.error.text));
+      }
+    });
   }
 
   addNewItem() {
+
     this.itemSubmitted = true;
     if (!this.itemForm.invalid) {
       this.itemService.postItems(this.itemForm.value).subscribe(response =>{
