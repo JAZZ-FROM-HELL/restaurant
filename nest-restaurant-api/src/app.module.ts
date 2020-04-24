@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import {MiddlewareConsumer, Module, NestModule} from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ShoppingCartController } from "./shopping-cart/shopping-cart.controller";
@@ -11,6 +11,7 @@ import { APP_FILTER, APP_INTERCEPTOR } from "@nestjs/core";
 import {GlobalExceptionFilter} from "./common/global-exception.filter";
 import {AppLoggerService} from "./common/app-logger.service";
 import {LoggingInterceptor} from "./common/logging.interceptor";
+import {ContextMiddleware} from "./common/context.middleware";
 
 
 @Module({
@@ -38,4 +39,8 @@ import {LoggingInterceptor} from "./common/logging.interceptor";
     }],
   exports: [AppLoggerService],
 })
-export class AppModule { }
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(ContextMiddleware).forRoutes('*');
+  }
+}

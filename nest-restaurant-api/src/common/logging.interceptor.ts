@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import {AppLoggerService} from "./app-logger.service";
 import { uuid } from 'uuidv4';
+import { hostname } from "os";
 
 @Injectable()
 export class LoggingInterceptor implements NestInterceptor {
@@ -15,12 +16,12 @@ export class LoggingInterceptor implements NestInterceptor {
 
     intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
 
-        const ctx = `${context.getClass().name}::${context.getHandler().name}`;
+        const ctx = `${hostname()}::${context.getClass().name}::${context.getHandler().name}`;
         const req = context.switchToHttp().getRequest();
         const res = context.switchToHttp().getResponse();
 
-        req.requestId = req.requestId ?? uuid();
         req.headers['ExecutionContext'] = ctx;
+        req.requestId = req.headers['requestId'];
 
         const {
             requestId,
