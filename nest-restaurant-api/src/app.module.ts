@@ -12,6 +12,7 @@ import {GlobalExceptionFilter} from "./common/global-exception.filter";
 import {AppLoggerService} from "./common/app-logger.service";
 import {LoggingInterceptor} from "./common/logging.interceptor";
 import {ContextMiddleware} from "./common/context.middleware";
+import { CatsModule } from './cats/cats.module';
 
 
 @Module({
@@ -25,7 +26,8 @@ import {ContextMiddleware} from "./common/context.middleware";
       database: 'orm',
       autoLoadEntities: true,
       synchronize: true,
-    })
+    }),
+    CatsModule
   ],
   controllers: [AppController, ShoppingCartController],
   providers: [AppService, AppLoggerService,

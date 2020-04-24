@@ -3,10 +3,10 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateItemDto } from './create-item.dto';
 import { Item } from "./item";
-
+import { CRUDService } from "../common/crud.service";
 
 @Injectable()
-export class ItemsService {
+export class ItemsService implements CRUDService<Item> {
     constructor(
       @InjectRepository(Item)
       private readonly itemsRepository: Repository<Item>,
