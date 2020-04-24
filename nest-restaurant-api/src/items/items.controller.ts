@@ -20,7 +20,7 @@ export class ItemsController {
     @UseGuards(JwtAuthGuard)
     @UsePipes(new ValidationPipe())
     async create(@Body() createItemDto: CreateItemDto) {
-        this.itemsService.create(createItemDto);
+        await this.itemsService.create(createItemDto);
     }
 
 }
