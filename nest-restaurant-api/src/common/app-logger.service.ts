@@ -11,8 +11,8 @@ export enum LOG_LEVEL {
 @Injectable({ scope: Scope.TRANSIENT })
 export class AppLoggerService extends Logger {
 
-    private line(level: LOG_LEVEL, message: string, optionalParameters: any[], trace?:string):string {
-        return `[${level}] ${message}: ${JSON.stringify(optionalParameters[0])}. Trace: ${trace}`;
+    private line(level: LOG_LEVEL, message: string, optionalParameters: any[]):string {
+        return `[${level}] ${message}: ${JSON.stringify(optionalParameters[0])}`;
     }
 
     log(message: string, context: string, ...optionalParams: any[]) {
@@ -20,7 +20,7 @@ export class AppLoggerService extends Logger {
     }
 
     error(message: string, trace: string, context?: string, ...optionalParams: any[]) {
-        super.error(this.line(LOG_LEVEL.ERROR, message, optionalParams, trace), context);
+        super.error(this.line(LOG_LEVEL.ERROR, message, optionalParams), trace, context);
     }
 
     warn(message: string, context: string, ...optionalParams: any[]) {
