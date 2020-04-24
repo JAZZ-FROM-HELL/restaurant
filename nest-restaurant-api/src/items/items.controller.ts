@@ -3,7 +3,7 @@ import { CreateItemDto } from './create-item.dto';
 import { ItemsService } from './items.service';
 import { Item } from "./item";
 import { ValidationPipe } from "../common/validation.pipe";
-import {JwtAuthGuard} from "../auth/jwt-auth.guard";
+import { JwtAuthGuard } from "../auth/jwt-auth.guard";
 
 @Controller('items')
 export class ItemsController {
@@ -19,8 +19,8 @@ export class ItemsController {
     @Post()
     @UseGuards(JwtAuthGuard)
     @UsePipes(new ValidationPipe())
-    async create(@Body() createItemDto: CreateItemDto) {
-        await this.itemsService.create(createItemDto);
+    async create(@Body() createItemDto: CreateItemDto):Promise<Item> {
+        return this.itemsService.create(createItemDto);
     }
 
 }
