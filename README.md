@@ -8,6 +8,13 @@
 <a href="https://docs.nestjs.com/interceptors">Logging interceptors</a><br/><br/>
 </p>
 <hr/>
+<h3>Prepare DB:</h3>
+<p>
+With root user in default.env.json:
+CREATE DATABASE restaurant_dev;
+CREATE DATABASE restaurant_test;
+</p>
+<hr/>
 <h3>Testing:</h3>
 <h4>Server side unit test:</h4>
 <p>jest --runInBand --testNamePattern=ItemsService</p>
