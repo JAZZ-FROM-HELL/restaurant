@@ -15,7 +15,7 @@ describe('App', () => {
     await app.init();
   });
 
-  it('root', () => {
+  it('Hello World!', () => {
     console.log('Env run: ', process.env.ENV_RUN);
 
     return request(app.getHttpServer())

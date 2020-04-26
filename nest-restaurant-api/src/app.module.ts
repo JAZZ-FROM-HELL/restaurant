@@ -26,13 +26,7 @@ import {ConfigModule, ConfigService} from '@nestjs/config';
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
-      useFactory: (configService:ConfigService) => {
-        console.log(
-            '\nprocess.env.RUN_ENV', process.env.RUN_ENV,
-            '\nDB_HOST:', configService.get<string>('DB_HOST'),
-            '\nDB_NAME:', configService.get<string>('DB_NAME'),
-        );
-        return ({
+      useFactory: (configService:ConfigService) => ({
           type: 'mysql',
           host: configService.get<string>('DB_HOST'),
           port: configService.get<number>('DB_PORT'),
@@ -41,8 +35,7 @@ import {ConfigModule, ConfigService} from '@nestjs/config';
           database: configService.get<string>('DB_NAME'),
           autoLoadEntities: true,
           synchronize: true,
-        });
-      },
+        }),
     }),
   ],
   controllers: [AppController, ShoppingCartController],

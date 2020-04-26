@@ -3,17 +3,17 @@ import {Item} from "./item";
 export const items:Item[] = [
     {
         id: 1,
-        name: 'vBurger',
+        name: 'mockBurger',
         price: 3,
     },
     {
         id: 2,
-        name: 'vPizza',
+        name: 'mockPizza',
         price: 4,
     },
     {
         id: 3,
-        name: 'salad',
+        name: 'mockSalad',
         price: 2,
     }
 ];
