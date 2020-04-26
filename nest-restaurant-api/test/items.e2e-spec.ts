@@ -16,7 +16,6 @@ describe('Items', () => {
     let token:string;
 
     beforeAll(async () => {
-
        const moduleRef = await Test.createTestingModule({
            imports: [AppModule],
        }).compile();
@@ -41,7 +40,8 @@ describe('Items', () => {
             .expect(HttpStatus.CREATED)
             .expect((res) => {
                 token = res.body.token;
-        });
+            });
+
     });
 
     it('/GET items', () => {
@@ -70,6 +70,10 @@ describe('Items', () => {
            .send(createItemDto)
            .expect(HttpStatus.CREATED)
            .expect({...createItemDto, id: getNewItemId()});
+    });
+
+    afterAll( async () => {
+        await itemsRepo.manager.connection.close();
     });
 
     afterAll(async () => {

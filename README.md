@@ -17,10 +17,9 @@ CREATE DATABASE restaurant_test;
 <hr/>
 <h3>Testing:</h3>
 <h4>Server side unit test:</h4>
-<p>jest --runInBand --testNamePattern=ItemsService</p>
-<p>jest --runInBand --testNamePattern=ItemsController</p>
+<p>npm run test</p>
 <h4>Server side e2e test:</h4>
-<p></p>
+<p>npm run test:e2e</p>
 <h4>Client side unit test:</h4>
 <p></p>
 <h4>Client side e2e test:</h4>

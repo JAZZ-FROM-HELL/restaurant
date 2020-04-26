@@ -16,11 +16,14 @@ describe('App', () => {
   });
 
   it('Hello World!', () => {
-    console.log('Env run: ', process.env.ENV_RUN);
-
     return request(app.getHttpServer())
       .get('/')
       .expect(200)
       .expect('Hello World!');
   });
+
+  afterAll(async () => {
+    await app.close();
+  });
+
 });
