@@ -6,7 +6,12 @@
 <a href="https://jasonwatmore.com/post/2019/06/22/angular-8-jwt-authentication-example-tutorial">Angular 8 - JWT Authentication Example & Tutorial</a><br/><br/>
 <a href="https://github.com/nestjs/nest/tree/master/sample/05-sql-typeorm">SQL TypeORM Example</a><br/><br/>
 <a href="https://docs.nestjs.com/interceptors">Logging interceptors</a><br/><br/>
+<a href="https://docs.nestjs.com/fundamentals/testing">NestJS Testing (Unit testing with Jest, e2e testing with Supertest)</a><br/><br/>
+<a href="https://docs.nestjs.com/techniques/configuration">NestJS Configuration</a><br/><br/>
+<a href="https://codecraft.tv/courses/angular/unit-testing/mocks-and-spies/">Angular Testing with Mocks (Jasmine, Karma)</a><br/><br/>
+<a href="https://codecraft.tv/courses/angular/unit-testing/model-driven-forms/">Angular Forms Testing </a><br/><br/>
 </p>
+
 <hr/>
 <h3>Prepare DB:</h3>
 <p>

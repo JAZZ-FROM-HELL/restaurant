@@ -9,11 +9,9 @@
   <tbody>
     <tr *ngFor="let item of items"> <!--for every item in object items, create a table row -->
       <td>{{item.name}}</td> <!--Write its name in a column -->
-      <td>${{item.price}}</td> <!-- Write its price in a column -->
+      <td>{{item.price | currency}}</td> <!-- Write its price in a column -->
       <td>
-        <button class="btn btn-secondary" (click)="addToCart()">
-          Add to shopping cart
-        </button>
+        <button class="btn btn-secondary" (click)="addToCart()">Add to shopping cart</button>
       </td>
     </tr>
   </tbody>
