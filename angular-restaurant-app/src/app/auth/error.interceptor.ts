@@ -4,7 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { AuthenticationService } from './authentication.service';
-import {LoginComponent} from "./login.component";
+import {LoginComponent} from "../login/login.component";
 
 /**
  * The Error Interceptor intercepts http responses from the api to check if there were any errors. If there is a 401 Unauthorized response the user is automatically logged out of the application, all other errors are re-thrown up to the calling service so an alert with the error can be displayed on the screen.

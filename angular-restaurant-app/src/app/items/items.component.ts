@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Item } from './item.interface';
+import { Item } from './item.entity';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { ItemsService } from './items.service';
 
@@ -47,8 +47,8 @@ export class ItemsComponent implements OnInit {
 
     this.itemSubmitted = true;
     if (!this.itemForm.invalid) {
-      this.itemService.postItems(this.itemForm.value).subscribe(response =>{
-        window.location.reload();
+      this.itemService.postItem(this.itemForm.value).subscribe((res) =>{
+        this.items.push(res);
       }, error => {
         window.alert(error.error.message);
       });

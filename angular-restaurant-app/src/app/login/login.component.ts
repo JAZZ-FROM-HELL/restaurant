@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
-import { AuthenticationService } from './authentication.service';
+import { AuthenticationService } from '../auth/authentication.service';
 
 /**
  The login component uses the authentication service to login to the application. If the user is already logged in they are automatically redirected to the home page.

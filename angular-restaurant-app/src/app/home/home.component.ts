@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import { first } from 'rxjs/operators';
 
 import { User } from '../users/user';
@@ -12,9 +12,12 @@ import { AuthenticationService } from '../auth/authentication.service';
 @Component({ templateUrl: 'home.component.html' })
 export class HomeComponent {
   loading = false;
+  title = 'You\'re logged in with Angular 8 & JWT!!';
   user: User;
 
-  constructor(private userService: UserService) { }
+  static PATH = 'home';
+
+  constructor(@Inject(UserService) private userService) { }
 
   ngOnInit() {
     this.loading = true;

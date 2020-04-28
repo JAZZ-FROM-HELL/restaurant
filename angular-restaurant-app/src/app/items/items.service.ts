@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Item } from './item.interface';
+import { Item } from './item.entity';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
@@ -14,7 +14,7 @@ export class ItemsService {
     return this.http.get<Item[]>('/api/items');
   }
 
-  public postItems(item: Item): Observable<Item> {
+  public postItem(item: Item): Observable<Item> {
     return this.http.post<Item>('/api/items', item);
   }
 

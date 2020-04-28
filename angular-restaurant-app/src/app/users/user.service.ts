@@ -5,7 +5,7 @@ import { environment } from '../../environments/environment';
 import { User } from './user';
 import {Observable} from "rxjs";
 
-@Injectable({ providedIn: 'root' })
+@Injectable({ providedIn: 'any' })
 export class UserService {
   constructor(private http: HttpClient) { }
 
