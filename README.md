@@ -26,7 +26,7 @@ CREATE DATABASE restaurant_test;
 <h4>Server side e2e test:</h4>
 <p>npm run test:e2e</p>
 <h4>Client side unit test:</h4>
-<p></p>
+<p>ng test</p>
 <h4>Client side e2e test:</h4>
 <p></p>
 <hr/>
