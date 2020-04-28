@@ -1,9 +1,5 @@
 <h2>nest-restaurant-api</h2>
-<h3>Run:</h3> 
-<p>
-Server (nest-restaurant-api): <br/>npm start<br/><br/>
-Client (angular-restaurant-app): <br/>ng serve --proxy-config proxy.config.js --open<br/>
-</p>
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
 </p>

@@ -1,11 +1,4 @@
 # AngularRestaurantApp
-<h3>Run:</h3> 
-<p>
-Server (nest-restaurant-api): <br/>npm start<br/><br/>
-Client (angular-restaurant-app): <br/>ng serve --proxy-config proxy.config.js --open<br/>
-</p>
-<br/>
-
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.1.
 
 ## Development server
