@@ -20,6 +20,7 @@ describe('App', () => {
     loginPage = new LoginPage();
     homePage = new HomePage();
     itemsPage = new ItemsPage();
+
   });
 
   // protected root url should redirect to login page when user is not logged in
@@ -35,7 +36,9 @@ describe('App', () => {
 
   it('login wrong credentials', () => {
     app.navigateTo('');
+    expect(browser.getCurrentUrl()).toContain(browser.baseUrl + loginPage.getEndpoint());
     loginPage.submitLogin({username: 'john', password: 'wrong'});
+    expect(element(by.css('.alert-danger')).isPresent()).toBe(true);
     expect(loginPage.getErrorMessage()).toEqual('Invalid username or password');
   });
 

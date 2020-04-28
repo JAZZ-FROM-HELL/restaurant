@@ -13,7 +13,7 @@ CREATE DATABASE restaurant_test;<br/>
 </p>
 <h4>Client side - angular-restaurant-app</h4> 
 <p>
-ng serve --proxy-config proxy.config.js --open<br/>
+ng serve --open<br/>
 </p>
 <hr/>
 
