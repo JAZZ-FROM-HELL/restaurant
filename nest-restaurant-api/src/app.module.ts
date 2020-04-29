@@ -10,8 +10,8 @@ import { UsersModule } from './users/users.module';
 import { APP_FILTER, APP_INTERCEPTOR } from "@nestjs/core";
 import {GlobalExceptionFilter} from './common/global-exception.filter';
 import {AppLoggerService} from './common/app-logger.service';
-import {LoggingInterceptor} from './common/logging.interceptor';
-import {ContextMiddleware} from './common/context.middleware';
+import {ResponseLoggingInterceptor} from './common/response-logging-interceptor.service';
+import {RequestLoggerMiddleware} from './common/request-logger.middleware';
 import {ConfigModule, ConfigService} from '@nestjs/config';
 
 @Module({
@@ -46,12 +46,12 @@ import {ConfigModule, ConfigService} from '@nestjs/config';
     },
     {
       provide: APP_INTERCEPTOR,
-      useClass: LoggingInterceptor,
+      useClass: ResponseLoggingInterceptor,
     }],
   exports: [AppLoggerService],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(ContextMiddleware).forRoutes('*');
+    consumer.apply(RequestLoggerMiddleware).forRoutes('*');
   }
 }

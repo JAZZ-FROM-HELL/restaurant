@@ -1,4 +1,4 @@
-import {Catch, ExceptionFilter, ArgumentsHost, HttpException, HttpStatus, Inject, HttpServer} from '@nestjs/common';
+import {Catch, ArgumentsHost, HttpException, HttpStatus, Inject } from '@nestjs/common';
 import {AppLoggerService} from "./app-logger.service";
 import {BaseExceptionFilter} from "@nestjs/core";
 
@@ -9,6 +9,7 @@ export class GlobalExceptionFilter extends BaseExceptionFilter {
     }
 
     catch(exception: Error, host: ArgumentsHost) {
+        const timestamp = Date.now();
         const ctx = host.switchToHttp();
         const req = ctx.getRequest();
         const res = ctx.getResponse();
@@ -20,19 +21,18 @@ export class GlobalExceptionFilter extends BaseExceptionFilter {
 
         const attributes = {
             statusCode: status,
-            timestamp: new Date().toISOString(),
+            message: exception.message,
+            requestId: req.headers['requestId'],
+            timestamp: timestamp,
+            duration: `${timestamp - req.headers['timestamp']}ms`,
             path: res.url,
-            requestPath: req.url,
-            requestHeaders: req.headers,
-            requestBody: req.body,
+            debug: req.headers['DebugContext'],
         };
 
-        const executionContext = req.headers['ExecutionContext'];
-
         if (status === HttpStatus.INTERNAL_SERVER_ERROR) {
-            this.logger.error(`${exception.name}: ${exception.message}`, exception.stack, executionContext, attributes);
+            this.logger.error(`${exception.name}`, exception.stack, req.headers['context'], attributes);
         } else if (status >= 400 && status < 500 ) {
-            this.logger.warn(`${exception.name}: ${exception.message}`, executionContext, attributes);
+            this.logger.warn(`${exception.name}`, req.headers['context'], attributes);
         }
 
         super.catch(exception, host);

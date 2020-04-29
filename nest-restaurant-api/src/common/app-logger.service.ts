@@ -24,15 +24,15 @@ export class AppLoggerService extends Logger {
     }
 
     warn(message: string, context: string, ...optionalParams: any[]) {
-        super.warn(this.line(LOG_LEVEL.WARN, message, optionalParams));
+        super.warn(this.line(LOG_LEVEL.WARN, message, optionalParams), context);
     }
 
     debug(message: string, context: string, ...optionalParams: any[]) {
-        super.debug(this.line(LOG_LEVEL.DEBUG, message, optionalParams));
+        super.debug(this.line(LOG_LEVEL.DEBUG, message, optionalParams), context);
     }
 
     verbose(message: string, context: string, ...optionalParams: any[]) {
-        super.verbose(this.line(LOG_LEVEL.VERBOSE, message, optionalParams));
+        super.verbose(this.line(LOG_LEVEL.VERBOSE, message, optionalParams), context);
     }
 
 }
